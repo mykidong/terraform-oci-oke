@@ -3,7 +3,7 @@ module "oke" {
   version = "4.0.3"
 
   home_region = var.chango_regions["home"]
-  region      = var.chango_regions["v8o"]
+  region      = var.chango_regions["chango"]
 
   tenancy_id = var.tenancy_id
 
@@ -21,20 +21,20 @@ module "oke" {
   nat_gateway_route_rules      = []
 
   vcn_cidrs     = ["10.0.0.0/16"]
-  vcn_dns_label = "v8o"
-  vcn_name      = "v8o"
+  vcn_dns_label = "chango"
+  vcn_name      = "chango"
 
   # bastion host
-  create_bastion_host = true
+  create_bastion_host = false
   upgrade_bastion     = false
 
   # operator host
-  create_operator                    = true
-  enable_operator_instance_principal = true
+  create_operator                    = false
+  enable_operator_instance_principal = false
   upgrade_operator                   = false
 
   # oke cluster options
-  cluster_name                = "v8o"
+  cluster_name                = "chango"
   control_plane_type          = "private"
   control_plane_allowed_cidrs = ["0.0.0.0/0"]
   kubernetes_version          = "v1.21.5"
@@ -45,7 +45,7 @@ module "oke" {
   node_pools = {
     np1 = { shape = "VM.Standard.E4.Flex", ocpus = 2, memory = 32, node_pool_size = 2, boot_volume_size = 150, label = { app = "frontend", pool = "np1" } }
   }
-  node_pool_name_prefix = "v8o"
+  node_pool_name_prefix = "chango"
 
   # oke load balancers
   load_balancers          = "both"
@@ -56,18 +56,6 @@ module "oke" {
   # freeform_tags
   freeform_tags = {
     vcn = {
-      chango = "dev"
-    }
-    bastion = {
-      access     = "public",
-      role       = "bastion",
-      security   = "high"
-      chango = "dev"
-    }
-    operator = {
-      access     = "restricted",
-      role       = "operator",
-      security   = "high"
       chango = "dev"
     }
     oke = {

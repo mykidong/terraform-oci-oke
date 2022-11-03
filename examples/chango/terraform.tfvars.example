@@ -4,7 +4,7 @@ api_private_key_path = ""
 
 chango_regions = {
   home  = "us-phoenix-1"
-  v8o   = "ap-sydney-1"
+  chango   = "ap-sydney-1"
 }
 
 tenancy_id = ""
