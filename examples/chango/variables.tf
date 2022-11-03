@@ -57,25 +57,6 @@ variable "ssh_public_key_path" {
 }
 
 variable "freeform_tags" {
-  default = {
-    vcn = {
-      chango = "dev"
-    }
-    oke = {
-      cluster = {
-        environment = "dev"
-        role        = "cluster"
-      }
-      service_lb = {
-        environment = "dev"
-        role        = "load balancer"
-      }
-      node_pool = {
-        environment = "dev"
-        role        = "node-pool"
-      }
-    }
-  }
   description = "Tags to apply to different resources."
   type = object({
     vcn      = map(any),
