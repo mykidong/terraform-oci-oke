@@ -54,7 +54,7 @@ module "oke" {
   public_lb_allowed_ports = [80, 443]
 
   # freeform_tags
-  freeform_tags = var.freeform_tags
+  freeform_tags = var.freeform_tags["oke"]
 
   providers = {
     oci.home = oci.home
