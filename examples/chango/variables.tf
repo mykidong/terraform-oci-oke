@@ -60,6 +60,8 @@ variable "freeform_tags" {
   default = {
     vcn = {
       chango = "dev"
+      environment = "dev"
+      role        = "vcn"
     }
     oke = {
       cluster = {
