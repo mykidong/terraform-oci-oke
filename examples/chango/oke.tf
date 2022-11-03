@@ -12,8 +12,8 @@ module "oke" {
   label_prefix   = "dev"
 
   # ssh keys
-  ssh_private_key_path = "~/.ssh/id_rsa"
-  ssh_public_key_path  = "~/.ssh/id_rsa.pub"
+  ssh_private_key_path = var.ssh_private_key_path
+  ssh_public_key_path  = var.ssh_public_key_path
 
   # networking
   create_drg                   = true
@@ -54,25 +54,7 @@ module "oke" {
   public_lb_allowed_ports = [80, 443]
 
   # freeform_tags
-  freeform_tags = {
-    vcn = {
-      chango = "dev"
-    }
-    oke = {
-      cluster = {
-        environment = "dev"
-        role        = "cluster"
-      }
-      service_lb = {
-        environment = "dev"
-        role        = "load balancer"
-      }
-      node_pool = {
-        environment = "dev"
-        role        = "node-pool"
-      }
-    }
-  }
+  freeform_tags = var.freeform_tags
 
   providers = {
     oci.home = oci.home
