@@ -58,6 +58,18 @@ module "oke" {
     vcn = {
       chango = "dev"
     }
+    bastion = {
+      access     = "public",
+      role       = "bastion",
+      security   = "high"
+      chango = "dev"
+    }
+    operator = {
+      access     = "restricted",
+      role       = "operator",
+      security   = "high"
+      chango = "dev"
+    }
     oke = {
       cluster = {
         environment = "dev"
